@@ -9,113 +9,29 @@ Changes to the content can be re-run over time to determine improvement or regre
 
 You may use external libraries if you feel they will help, but you must place them in the appropriate folder based on the project layout section.
 
-Code Requirements
------------------
-* Accept HTML Content Input
-* Accept unique id for HTML Content to score (filename prefix)
-* Score HTML content using the scoring guide
-* Save results to a SQL database (MySQL, SQL Server, sqlite, SQL Server Express)
-* Method: Retrieve scores for a unique id
-* Method: Retrieve all scores run in the system for a custom date range
-* Method: Retrieve highest scored unique id
-* Method: Retrieve lowest scored unique id
-* Additionally you should write one query that will find the average score for all runs **__see project layout below__**
-* Finally, include instructions on how to get your code running.  Include the version of whatever language you wrote it in, as well as what platform (windows/osx/linux, etc) you are on.  This helps us get running with your code.
+Languages and tools used:
+----------------------------
+-Java
+-MySQL Workbench 5.7.17
+    (You will also need MySql Community Installer if you are using a Windodws machine)
+-Java IDE for Java EE Developers
+    (https://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/keplersr2)
+-Using mysql-connector-java-5.1.39-bin as the JDBC driver
+    (located in WebContent->WEB_INF-> lib
+-Windows 10
 
-**Example of instructions and platform specifications**
-
->**Languages and tools used:**
->
->- Node v8.4.0
->- NPM v5.3.0
->- MySQL 5.7.17
->- SublimeText3 as my IDE
->- macOS High Sierra
->
->**Instructions**
->
->1. Start a local SQL server instance (I used 'mysql.server start' in the Terminal).
->2. Run SQL commands found in /schema/markup_schema.sql to create the database and tables.
->3. Navigate to the src/ directory
->4. run `npm install`
->4. run `npm start`
-
-## Bonus
-* Tag names are case-insensitive (ie: Html is the same as html)
-* Parse multiple sections of the HTML content at the same time for performance
-
-Scoring Rules
+Instructions:
 -------------
-Each starting tag should below has been assigned a score. Each tag in the content should be added to or subtracted from the total score.
+1. Import SQL dump file into MySql database
+    a. Click "Data Import/Restore"
+    b. Select "Import from Self-Contained File"
+    c. "Start Import"
+2. Find class "DBAccessConfig" in the persistance package
+    a. make sure you change your username and password accordingly in order to connect to the database
+3. Copy all files into a new "Dynamic Web Project" in Eclipse and run on the server
+    Note:
+        classes, object, persistance, and sevlet packages go under Java Resources - > src
+        WebContent can replace the auto-generated folder that is created when you make a new web project
+4. Go to "http://http://localhost:8080/MarkupProject/" to use the web project
 
-(We will assume for this project our html code creator created valid html)
-
-| TagName | Score Modifier | TagName | Score Modifier |
-| ------- | :------------: | ------- | -------------- |
-| div     | 3              | font    | -1             |
-| p       | 1              | center  | -2             |
-| h1      | 3              | big     | -2             |
-| h2      | 2              | strike  | -1             |
-| html    | 5              | tt      | -2             |
-| body    | 5              | frameset| -5             |
-| header  | 10             | frame   | -5             |
-| footer  | 10             |
-
-example:
-
-````
-<html>
-    <body>
-      <p>foo</p>
-      <p>bar</p>
-      <div text-align='center'>
-        <big>hello world</big>
-      </div>
-    </body>
-</html>
-````
-
-2 p tags = 2 x 1 <br>
-1 body tag = 1 x 5 <br>
-1 html tag = 1 x 5 <br>
-1 div tag = 1 x 3 <br>
-1 big tag = 1 x -2 <br>
-**Total Score: 13**
-
-
-Project Layout
---------------
-#### /data
-
-* Contains the HTML content data to parse, format: (keyname_yyyy_mm_dd)
-
-ie:
-* dougs_2012_02_04.html
-* dougs_2012_04_01.html
-* dougs_2012_07_01.html
-
-#### /src
-
-* Your code goes in here.
-
-#### /schema
-
-* Your create table statements for MySQL.
-* Your query to find the average score across each key. (see data example below)
-
-ie:
-
-| key | avgScore |
-|---|--------|
-| dougs | 10.35 |
-| bobs  | 8.03 |
-
-#### /vendor
-
-* Place any external libraries not written by you in the /vendor folder
-
-Instructions
-------------
-* Begin working on the project and commit your code to this repo.
-* When you are finished email your RedVentures recruiter.
-* Note that each folder has a blank README.md file.  Feel free to place any notes you may have in these files.
+--Or you can run the .war file on a private server
