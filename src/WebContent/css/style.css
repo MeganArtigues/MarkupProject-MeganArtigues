@@ -1,0 +1,87 @@
+ body {
+      position: relative; 
+      font-family: "Times New Roman", Times, serif;
+      font-size: 16px;
+  }
+  
+  #section1 {
+  	padding-top:50px;
+  	height:500px;
+  	color: #F7F7F2; 
+  	background-color: #121113;
+  }
+  
+  #section2 {
+  	padding-top:50px;
+  	height:500px;
+  	color: #F7F7F2; 
+  	background-color: #222725;
+  }
+  
+  
+  #section3 {
+  	padding-top:50px;
+  	height:500px;
+  	color: #F7F7F2; 
+  	background-color: #121113;
+  }
+   
+   .warning{
+   	  color: #a83c41;
+   	  font-size: 12pt;
+   }
+
+  .upload{
+ 	 margin:0px auto;
+ 	 display:block;
+ 	 color: #000078;
+ 	 blackground-color: #D1CAB0;
+     border-radius:5px;
+     -moz-border-radius:5px;
+     -webkit-border-radius:5px;
+ 	 
+  }
+  
+  .msg{
+  	color: red;
+  	font-size: 16px;
+  }
+
+  h1 h2 h3 h4 h5{
+  	text-align: center;
+  	font-weight: bold;
+  }
+  
+  th{
+  	text-align: center;
+  	text-weight: bold;
+  	color: #E4E6C3;
+  }
+  
+  div{
+  	text-align: center;
+  }
+  
+  p{
+  	text-align: center;
+  }
+  
+  input{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      color: black;
+    }
+    
+  table{
+  	text-align: center;
+  }
+  
+  .fileNames{
+  	text-align: left;
+  	float: left;
+  }
+  
+  .highlow{
+  	text-decoration: underline;
+  }
